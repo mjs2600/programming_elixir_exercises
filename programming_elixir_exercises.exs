@@ -14,6 +14,12 @@ defmodule ProgrammingElixir do
               rem(number, 5),
               number)
   end
+  
+  def factorial(num), do: factorial(num, 1)
+  defp factorial(0, acc), do: acc
+  defp factorial(num, acc) do
+    factorial(num - 1, acc * num)
+  end
 end
 
 IO.puts "Programming Elixir"
@@ -26,5 +32,13 @@ IO.puts ProgrammingElixir.fizz_buzz(1, 0, "Other")
 IO.puts ProgrammingElixir.fizz_buzz(1, 1, "Other")
 IO.puts "FizzBuzz Remainder"
 IO.puts "------------------"
-Enum.map(10..16, fn(num) -> IO.puts ProgrammingElixir.fizz_buzz_rem(num) end)
+Enum.map(10..16, fn(num) -> 
+                     IO.puts ProgrammingElixir.fizz_buzz_rem(num) end)
+IO.puts "Factorial"
+IO.puts "---------"
+Enum.map([0, 10, 100], fn(num) ->
+                              num |>
+                                ProgrammingElixir.factorial |>
+                                                    IO.puts
+        end)
 
